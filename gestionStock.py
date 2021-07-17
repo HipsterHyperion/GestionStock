@@ -6,9 +6,9 @@ class Contador:
 		self.ret = 0
 
 	def masUno(self):
-		self.__mmm = self.__mmm + 1 
+		self.__mmm = self.__mmm + 1
 		return self.__mmm
-	
+
 	def queda(self, entero):
 		self.nnn = entero
 		return None
@@ -18,9 +18,31 @@ class Contador:
 		return  None
 
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Clase Item_Stock >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+''''
+Nombre de la clase:
+	Item_Stock
+Atributos:
+	cod_Item: codigo del articulo,
+	item: nombre del articulo.
+	marca: nombre de la marca,
+	rubro: tipo de rubro {Alimentos, Perfumeria, Otro},
+	cod_Proveedor: codigo del proveedor,
+	u_Med: unidad de medicion,
+	cant_Existente: cantidad existente,
+	v_Min: valor minimo,
+	v_Max: valor maximo,
+	precio_U: precio unitario,
+	p_Ganancia: porcentaje de ganancia
+Operaciones:
+	constructor,
+	ToString,
+	Getters,
+	Setters,
+	Tuples
+''''
 class Item_Stock:
 
+#constructor
 	def __init__(self, cod_Item, item, marca, rubro, cod_Proveedor, u_Med, cant_Existente, v_Min, v_Max, precio_U, p_Ganancia):
 		self.__cod_Item = cod_Item
 		self.__item = item
@@ -34,11 +56,13 @@ class Item_Stock:
 		self.__precio_U = precio_U
 		self.__p_Ganancia = p_Ganancia
 
+#ToString()
 	def __str__(self):
 		a = str(self.__cod_Item) + str(self.__item) + str(self.__marca) + str(self.__rubro) + str(self.__cod_Proveedor)
 		b = str(self.__u_Med) + str(self.__cant_Existente) + str(self.__v_Min) + str(self.__v_Max) + str(self.__precio_U)
 		return a + b + str(self.__p_Ganancia)
 
+#Getters
 	def getCod(self):
 		return self.__cod_Item
 	def getItem(self):
@@ -62,6 +86,7 @@ class Item_Stock:
 	def getP_Ganancia(self):
 		return self.__p_Ganancia
 
+#Setters
 	def setCod(self, cod_Item):
 		self.__cod_Item = cod_Item
 	def setItem(self, item):
@@ -85,6 +110,7 @@ class Item_Stock:
 	def setP_Ganancia(self, p_Ganancia):
 		self.__p_Ganancia = p_Ganancia
 
+#Tuples
 	def dameTupla(self):
 		return (self.__cod_Item,self.__item,self.__marca,self.__rubro,self.__cod_Proveedor,self.__u_Med,self.__cant_Existente,self.__v_Min,self.__v_Max,self.__precio_U,self.__p_Ganancia)
 
@@ -94,17 +120,32 @@ class Item_Stock:
 	def tuplaDos(self):
 		return (self.__cant_Existente,self.__v_Min,self.__v_Max,self.__precio_U,self.__p_Ganancia)
 
-	
-#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Clase Proveedor >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	
 
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Clase Proveedor >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+''''
+Nombre de la clase:
+	Proveedor
+Atributos:
+	cod_Proveedor: codigo del proveedor,
+	nombre: nombre del proveedor,
+	direccion: direccion,
+	telefono: telefono
+Operaciones:
+	constructor,
+	Getters,
+	Setters,
+	Tuples
+''''
 class Proveedor:
 
+#constructor
 	def __init__ (self, cod_Proveedor,nombre, direccion, telefono):
 		self.__cod_Proveedor = cod_Proveedor
 		self.__nombre = nombre
 		self.__direccion = direccion
 		self.__telefono = telefono
 
+#Getters
 	def getCod(self):
 		return self.__cod_Proveedor
 	def getNombre(self):
@@ -114,6 +155,7 @@ class Proveedor:
 	def getTelefono(self):
 		return self.__telefono
 
+#Setters
 	def setCod(self, cod_Proveedor):
 		self.__cod_Proveedor = cod_Proveedor
 	def setNombre(self, nombre):
@@ -123,10 +165,26 @@ class Proveedor:
 	def setTelefono(self, telefono):
 		self.__telefono = telefono
 
+#Tuples
 	def dameTupla(self):
 		return (self.__cod_Proveedor,self.__nombre,self.__direccion,self.__telefono)
 
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<< Clase T_Stock >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+''''
+Nombre de la clase:
+	T_Stock:	tabla de stock
+Atributos:
+	item: mapa de aticulos
+Operaciones:
+	def __init__(self): constructor,
+	getTabla(self): getter,
+	aStock(self, cod_Item, item): agregar articulo, no admite codigos duplicados,
+	bStock: borrar articulo,
+	cStock: consultar articulo,
+	mStock: modificar articulo,
+	lProdSMin(self): devuelve un conjuto con cuyos artciculos tienen la cantidad existente menor al valor minimo,
+	vaciar: vacia el conjunto de articulos de item
+''''
 
 class T_Stock:
 
@@ -148,7 +206,7 @@ class T_Stock:
 		self.__item = {100:i0, 107:i1, 200:i2, 201:i3, 410:i4, 412:i5, 478:i6, 479:i7, 1209:i8, 1208:i9, 2301:j0, 2302:j1, 667:j2}
 		#'''
 		self.__item = {}
-		
+
 	def getTabla(self):
 		return self.__item
 
@@ -158,13 +216,13 @@ class T_Stock:
 			x = 1
 			self.__item[cod_Item] = item
 		return x
-	
+
 	def bStock(self, cod_Item):
 		return self.__item.pop(cod_Item)
-		
+
 	def cStock(self, cod_Item):
 		return self.__item.get(cod_Item)
-		
+
 	def mStock(self, cod_Item, item):
 		self.__item[cod_Item] = item
 		return None
@@ -182,7 +240,21 @@ class T_Stock:
 
 
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<< Clase T_Proveedor >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+''''
+Nombre de la clase:
+	T_Proveedor: tabla de proveedores
+Atributos:
+	prov: mapa de proveedores
+Operaciones:
+	def __init__(self): constructor,
+	getTabla(self): getter,
+	aProv(self, cod_Prov, prov): agregar proveedor, no admite codigo repetido,
+	bProv: borra proveedor,
+	cProv: consulta proveedor,
+	mProv: modifica proveedor,
+	lNbreProvs: devuelve la lista de nombre de los proveedores,
+	vaciar: vacia la tabla de proveedores
+''''
 class T_Proveedor:
 
 	def __init__(self):
@@ -192,7 +264,7 @@ class T_Proveedor:
 		self.__prov = {100:i0, 2301:i1}
 		#'''
 		self.__prov = {}
-		
+
 	def getTabla(self):
 		return self.__prov
 
@@ -202,7 +274,7 @@ class T_Proveedor:
 			self.__prov[cod_Prov] = prov
 			x = 1
 		return x
-	
+
 	def bProv(self, cod_Prov):
 		if self.__prov.get(cod_Prov):
 			b = self.__prov.pop(cod_Prov)
@@ -210,7 +282,7 @@ class T_Proveedor:
 
 	def cProv(self, cod_Prov):
 		return self.__prov.get(cod_Prov)
-	
+
 	def mProv(self, cod_Prov, prov):
 		self.__prov[cod_Prov] = prov
 		return None
@@ -225,7 +297,7 @@ class T_Proveedor:
 			qwerty.remove(aux)
 		return www
 
-	
+
 	def vaciar(self):
 		self.__prov = {}
 		return None
@@ -234,7 +306,7 @@ class T_Proveedor:
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<< Clase BD_Stock >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 class BD_Stock:
-	
+
 	def __init__(self):
 		self.__cant_Usuarios = 1
 		self.__acceso = {"A-Admin":"Ad1"}
@@ -252,8 +324,8 @@ class BD_Stock:
 		else:
 			esAdmin = -1
 		return esAdmin
-   	 		
-	def regUs(self,nombre,clave,tipo):    	
+
+	def regUs(self,nombre,clave,tipo):
 		if self.__acceso.get("A-"+nombre) == self.__acceso.get("N-"+nombre):
 			self.__acceso[tipo+nombre] = clave
 			self.__cant_Usuarios = len(self.__acceso)
@@ -261,7 +333,7 @@ class BD_Stock:
 		else:
 			exito = -1
 		return exito
-	
+
 	def elimUs(self,user):
 		self.__acceso.pop(user)
 		self.__cant_Usuarios = len(self.__acceso)
@@ -280,7 +352,7 @@ class BD_Stock:
 			while i < int(l[0]):
 				m = k[i].replace('(','')
 				n = m.replace(')','')
-				m = n.replace("'",'') 
+				m = n.replace("'",'')
 				self.insertarAcceso(m.split(', '))
 				i+=1
 			k = f.readline().split(";")
@@ -288,7 +360,7 @@ class BD_Stock:
 			while i < int(l[1]):
 				m = k[i].replace('(','')
 				n = m.replace(')','')
-				m = n.replace("'",'') 
+				m = n.replace("'",'')
 				self.insertarTStock(m.split(', '))
 				i+=1
 			k = f.readline().split(";")
@@ -296,7 +368,7 @@ class BD_Stock:
 			while i < int(l[2]):
 				m = k[i].replace('(','')
 				n = m.replace(')','')
-				m = n.replace("'",'') 
+				m = n.replace("'",'')
 				self.insertarTProveedor(m.split(', '))
 				i+=1
 			f.close()
@@ -305,7 +377,7 @@ class BD_Stock:
 			self.backUp(archivo)
 			exito = 2
 		return exito
-	
+
 	def backUp(self, archivo):
 		f = open(archivo+".txt","w")
 		f.write(str(len(self.__acceso))+";"+str(len(self.__tablas[0].getTabla()))+";"+str(len(self.__tablas[1].getTabla()))+";\n")
@@ -320,13 +392,13 @@ class BD_Stock:
 
 	def getTStock(self):
 		return self.__tablas[0].getTabla()
-	
+
 	def getTProveedor(self):
 		return self.__tablas[1].getTabla()
-	
+
 	def getTStock3(self):
 		return self.__tablas[0]
-	
+
 	def getTProveedor3(self):
 		return self.__tablas[1]
 
@@ -336,21 +408,21 @@ class BD_Stock:
 		for i in l:
 			acum += str(i) + ';'
 		return acum
-	
+
 	def getTStock2(self):
 		acum = ''
 		l = self.__tablas[0].getTabla().values()
 		for i in l:
 			acum += str(i.dameTupla()) + ';'
 		return acum
-	
+
 	def getTProveedor2(self):
 		acum = ''
 		l = self.__tablas[1].getTabla().values()
 		for i in l:
 			acum += str(i.dameTupla()) + ';'
 		return acum
-	
+
 	def insertarAcceso(self, tupla):
 		self.__acceso[tupla[0]]=tupla[1]
 		return None
@@ -365,12 +437,12 @@ class BD_Stock:
 
 ##:￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
 
-#<<<<<<<<<<<<<<<<<<<<<<<<<<<  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<  	>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 from tkinter import *
 from tkinter import messagebox
 from tkinter import Tk
-from tkinter import ttk 
+from tkinter import ttk
 from functools import reduce
 
 #print(b[1].configure('width'))
@@ -387,7 +459,7 @@ def dameMenor(x, y):
 	if y < x:
 		z = y
 	return z
-	
+
 def tuplatupla(x):
 	return x.dameTupla()
 
@@ -437,7 +509,7 @@ def iniciar():
 		menu[10].place(x=30,y=430)
 		menu[13].place(x=30,y=460)
 	return None
-		
+
 def salir():
 	ocultar()
 	raiz.geometry(dimension1)
@@ -831,7 +903,7 @@ def llenarTablaUsuario(lista):
 	for e in lista:
 		tablaUsuario.insert("",0,text = e, values=(e,lista[e]))
 	return None
-		
+
 def llenarTablaStock(lista):
 	vaciarTabla(tablaStock1)
 	vaciarTabla(tablaStock2)
